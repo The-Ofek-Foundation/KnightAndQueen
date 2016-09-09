@@ -47,13 +47,14 @@ public class EightQueens	{
 	private boolean addQueen(int x, int y, int[][] threatenedBoard) {
 		if (threatenedBoard[x][y] != -1)
 			return false;
-		for (int i = x; i < threatenedBoard.length; i++)
+		int i, a;
+		for (i = x; i < threatenedBoard.length; i++)
 			if (threatenedBoard[i][y] == -1)
 				threatenedBoard[i][y] = x;
-		for (int i = x + 1, a = y + 1; i < threatenedBoard.length && a < threatenedBoard[i].length; i++, a++)
+		for (i = x + 1, a = y + 1; i < threatenedBoard.length && a < threatenedBoard[i].length; i++, a++)
 			if (threatenedBoard[i][a] == -1)
 				threatenedBoard[i][a] = x;
-		for (int i = x + 1, a = y - 1; i < threatenedBoard.length && a >= 0; i++, a--)
+		for (i = x + 1, a = y - 1; i < threatenedBoard.length && a >= 0; i++, a--)
 			if (threatenedBoard[i][a] == -1)
 				threatenedBoard[i][a] = x;
 		return true;
