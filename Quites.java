@@ -38,20 +38,18 @@ public class Quites	{
 		System.out.printf("%,d solutions in %,f seconds\n", numSolutions, (System.nanoTime()-startTime) / 1E9);
 	}
 	private void solveQueens(int x, int y, int[][] threatenedBoard)	{
-		if (addQueen(x, y, threatenedBoard)) {
-			if (x == threatenedBoard.length - 1) {
-				numSolutions++;
-				threatenedBoard[x][y] = -1;
-			}	else {
-				for (int i = 0; i < threatenedBoard.length; i++)
+		addQueen(x, y, threatenedBoard);
+		if (x == threatenedBoard.length - 1) {
+			numSolutions++;
+			threatenedBoard[x][y] = -1;
+		}	else {
+			for (int i = 0; i < threatenedBoard.length; i++)
+				if (threatenedBoard[x + 1][i] == -1)
 					solveQueens(x + 1, i, threatenedBoard);
-				removeQueen(x, y, threatenedBoard);
-			}
+			removeQueen(x, y, threatenedBoard);
 		}
 	}
-	private boolean addQueen(int x, int y, int[][] threatenedBoard) {
-		if (threatenedBoard[x][y] != -1)
-			return false;
+	private void addQueen(int x, int y, int[][] threatenedBoard) {
 		int i, a;
 		for (i = x; i < threatenedBoard.length; i++)
 			if (threatenedBoard[i][y] == -1)
@@ -74,7 +72,6 @@ public class Quites	{
 			if (y < threatenedBoard[x+2].length - 1 && threatenedBoard[x+2][y+1] == -1)
 				threatenedBoard[x+2][y+1] = x;
 		}
-		return true;
 	}
 	private void removeQueen(int x, int y, int[][] threatenedBoard) {
 		int i, a;

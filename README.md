@@ -5,5 +5,7 @@ The "Quites" are Queen Knights, which should run considerably faster.
 
 ### Usage
 
-java EightQueens <board width>
+java EightQueens <board width> <multithreading depth (1 or 2)> <include additional value for quites>
 java Quites <board width>
+
+Note that depth 1 for multithreading is generally better (unless you have many cores)
