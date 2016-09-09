@@ -13,7 +13,7 @@
 
 public class EightQueens	{
 	private int[][] threatenedBoard;
-	private long numSolutions;
+	private int numSolutions;
 
 	EightQueens(int w)	{
 		threatenedBoard = new int[w][w];
@@ -33,7 +33,7 @@ public class EightQueens	{
 		int i;
 		for (i = 0; i < (int)(threatenedBoard.length / 2); i++)
 			solveQueens(0, i, threatenedBoard);
-		long tempSolutions = numSolutions;
+		int tempSolutions = numSolutions;
 		if (threatenedBoard.length % 2 == 1)
 			solveQueens(0, i, threatenedBoard);
 		numSolutions += tempSolutions;
@@ -79,7 +79,7 @@ public class EightQueens	{
 
 class EightQueensRunner {
 	private EightQueensThread[] threads;
-	private long numSolutions, oddSolutions;
+	private int numSolutions, oddSolutions;
 	private int threadsCompleted;
 	private double startTime;
 	private int numThreads;
@@ -105,7 +105,7 @@ class EightQueensRunner {
 		}
 	}
 
-	public synchronized void addNumSolutions(long numSolutions, int threadNum) {
+	public synchronized void addNumSolutions(int numSolutions, int threadNum) {
 		if (width % 2 == 1 && threadNum >= numThreads - depth)
 			oddSolutions += numSolutions;
 		else this.numSolutions += numSolutions;
@@ -125,7 +125,7 @@ class EightQueensThread extends Thread {
 	private String threadName;
 	private EightQueensRunner runner;
 	private int threadNum;
-	private long numSolutions;
+	private int numSolutions;
 	private int depth;
 	private boolean quites;
 
