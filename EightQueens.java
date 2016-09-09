@@ -28,8 +28,13 @@ public class EightQueens	{
 	}
 	public void run()	{
 		double startTime = System.nanoTime();
-		for (int i = 0; i < threatenedBoard.length; i++)
+		int i;
+		for (i = 0; i < (int)(threatenedBoard.length / 2); i++)
 			solveQueens(0, i, threatenedBoard);
+		long tempSolutions = numSolutions;
+		if (threatenedBoard.length % 2 == 1)
+			solveQueens(0, i, threatenedBoard);
+		numSolutions += tempSolutions;
 		System.out.printf("%,d solutions in %,f seconds\n", numSolutions, (System.nanoTime()-startTime) / 1E9);
 	}
 	private void solveQueens(int x, int y, int[][] threatenedBoard)	{
